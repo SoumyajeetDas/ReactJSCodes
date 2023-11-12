@@ -1,0 +1,10 @@
+.formgroup{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.textbox{
+    width: 20rem;
+    margin-left: 1rem
+}

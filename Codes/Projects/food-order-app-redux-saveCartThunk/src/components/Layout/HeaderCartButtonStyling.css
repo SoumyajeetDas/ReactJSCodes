@@ -1,0 +1,47 @@
+#cart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #641E16;
+    padding: 10px 20px;
+    border-radius: 50px;
+    width: 200px;
+}
+
+#reset-button {
+    background-color: #BA4A00;
+    border:0
+}
+
+
+#number {
+    background-color: #BA4A00;
+    width: 39px;
+    border-radius: 20px;
+}
+
+.bump {
+    animation: bump 300ms ease-out;
+}
+
+@keyframes bump {
+    0% {
+        transform: scale(1);
+    }
+
+    10% {
+        transform: scale(0.9);
+    }
+
+    30% {
+        transform: scale(1.1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

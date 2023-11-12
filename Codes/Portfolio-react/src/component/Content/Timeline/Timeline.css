@@ -1,0 +1,7 @@
+#timeline {
+    box-shadow: inset -13px -13px 20px #fff, inset 13px 13px 20px #cbced1;
+    width: 95%;
+    border-radius: 40px;
+    padding: 3rem 3rem;
+    margin: auto;
+}

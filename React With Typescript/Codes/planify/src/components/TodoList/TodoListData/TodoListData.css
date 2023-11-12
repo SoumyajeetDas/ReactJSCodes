@@ -1,0 +1,29 @@
+#todo-data{
+    background-color: #E6B0AA;
+    height:5rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 30px;
+    color: #C0392B;
+    font-weight: 800;
+    font-size: 1.2rem;
+    border:3px solid #C0392B;
+}
+
+
+#icon-todo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#change-status{
+    outline: none;
+    border: none;
+    background-color: #F9EBEA;
+    color: #C0392B;
+    font-weight: 800;
+    font-size: 1.2rem;
+}

@@ -1,0 +1,20 @@
+#contain-skills{
+    box-shadow: -13px -13px 20px #fff, 13px 13px 20px #cbced1;
+    width: 95%;
+    border-radius: 40px;
+    padding: 3rem 2rem;
+    margin: auto;
+}
+
+.skillset{
+    box-shadow: -8px -4px 20px #fff, 8px 4px 20px #cbced1;
+    padding: 1rem 0;
+    height: 100%;
+    margin:1rem;
+}
+
+.skillset h4{
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+    margin-top: 1rem;
+}

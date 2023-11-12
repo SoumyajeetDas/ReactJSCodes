@@ -1,0 +1,30 @@
+#active-tasks{
+    width: 100%;
+    /* background-color: #000000; */
+    padding:1rem 0;
+    border: 1px solid #C0392B;
+    border-radius:5%
+}
+
+#active-tasks h3{
+    color: #E6B0AA;
+    font-family: 'Jost', sans-serif;
+}
+
+#no-data{
+    margin-top: 1.5rem;
+    color: white;
+}
+
+#completed-tasks{
+    width: 100%;
+    /* background-color: #000000; */
+    padding:1rem 0;
+    border: 1px solid #17A589;
+    border-radius:5%
+}
+
+#completed-tasks h3{
+    color: #D5F5E3;
+    font-family: 'Jost', sans-serif;
+}

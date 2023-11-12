@@ -1,0 +1,60 @@
+#mob-menubar-initial {
+    display: none;
+}
+
+#mob-menubar {
+    position: fixed;
+    width: 250px;
+    /* height: 50%; */
+    left: 5px;
+    top: 20px;
+    background-color: #ecf0f3;
+    border-radius: 10px;
+    padding: 2rem 1rem;
+    cursor: pointer;
+    color: white;
+    font-family: 'Prosto One', cursive;
+    z-index: 7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+#mob-menubar button {
+    background-color: #00ddb3;
+    color: #fff;
+    box-shadow: -2px -4px 5px #fff, 5px 5px 5px #cbced1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+
+#mob-menubar button:hover {
+    background-color: #00b594;
+}
+
+#close-button {
+
+    box-shadow: -13px -13px 20px #fff, 13px 13px 20px #cbced1;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+}
+
+#close-button img {
+    box-shadow: -2px -4px 5px #fff, 5px 5px 5px #cbced1;
+    border-radius: 1rem;
+}
+
+#close-button div {
+    box-shadow: -2px -4px 5px #fff, 5px 5px 5px #cbced1;
+    border-radius: 1rem;
+}

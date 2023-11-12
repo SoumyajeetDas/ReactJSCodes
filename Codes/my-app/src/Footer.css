@@ -1,0 +1,15 @@
+footer{
+    height:50px;
+    text-align:center;
+    background-color: rgb(15, 62, 14);
+    flex-shrink: 0;
+   
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+footer p{
+    margin:0px 0px;
+    color:white;
+}

@@ -1,0 +1,14 @@
+.summary {
+    width: 90%; /*In mobile after we give this we are having space in left and right*/
+    margin-top: -10rem; /*This only is keeping the box above the image */
+    position: relative;
+    color: white;
+    padding: 1rem;
+
+}
+
+.data {
+    background-color: #383838;
+    border-radius: 14px;
+    box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25)
+}
