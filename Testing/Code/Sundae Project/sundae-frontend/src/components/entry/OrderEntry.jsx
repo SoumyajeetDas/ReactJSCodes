@@ -11,10 +11,10 @@ const OrderEntry = ({ setOrderPhase }) => {
         <Col>
           <Options optionType="scoops" />
           <Options optionType="toppings" />
-          <h2>Grand total: ${(total.scoops + total.toppings).toFixed(2)}</h2>
+          <h2>Grand total: ${(total?.scoops + total?.toppings).toFixed(2)}</h2>
           {/* <SummaryForm setOrderPhase={setOrderPhase} /> */}
           <Button
-            disabled={total.scoops ? false : true}
+            disabled={total?.scoops ? false : true}
             onClick={() => setOrderPhase('review')}
           >
             Order Sundae
