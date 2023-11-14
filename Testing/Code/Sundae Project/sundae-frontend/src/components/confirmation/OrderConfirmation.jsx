@@ -7,10 +7,10 @@ import AlertBanner from '../common/AlertBanner.jsx';
 const OrderConfirmation = ({ setOrderPhase }) => {
   const [orderNumber, setOrderNumber] = useState(null);
   const [showError, setShowError] = useState(false);
-  const { resetOptionsCounts } = useOrderDetails();
+  const { resetOrder } = useOrderDetails();
 
   const handleClick = () => {
-    resetOptionsCounts();
+    resetOrder();
     setOrderPhase('inProgress');
   };
 

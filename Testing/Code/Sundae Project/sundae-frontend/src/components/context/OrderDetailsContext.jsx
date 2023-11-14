@@ -16,6 +16,8 @@ export const OrderDetailsProvider = ({ children }) => {
 
         newOptionCounts[optionType][itemName] = newItemCount;
 
+        console.log(newOptionCounts)
+
         setOptionCounts(newOptionCounts);
     };
 

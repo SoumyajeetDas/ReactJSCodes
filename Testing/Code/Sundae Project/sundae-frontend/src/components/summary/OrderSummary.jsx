@@ -4,11 +4,11 @@ import { useOrderDetails } from '../../hooks/useOrderDetails';
 import SummaryForm from './SummaryForm.jsx';
 
 const OrderSummary = ({ setOrderPhase }) => {
-  const { total, optionsCount } = useOrderDetails();
+  const { total, optionCounts } = useOrderDetails();
 
   // Object to Array
-  const scoopsArray = Object.entries(optionsCount.scoops); // [["Choclate",1],["Vanilla",2]]
-  const toppingsArray = Object.entries(optionsCount.toppings); // [["M&Ms",1],["Mochi",2]]
+  const scoopsArray = Object.entries(optionCounts.scoops); // [["Choclate",1],["Vanilla",2]]
+  const toppingsArray = Object.entries(optionCounts.toppings); // [["M&Ms",1],["Mochi",2]]
 
   const scoopList = scoopsArray.map(([key, value]) => (
     <li key={key}>
