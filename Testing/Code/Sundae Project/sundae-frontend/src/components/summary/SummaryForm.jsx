@@ -17,7 +17,6 @@ const SummaryForm = ({ setOrderPhase }) => {
         <span>
             I agree to
             <OverlayTrigger placement="right" overlay={popover}>
-
                 <span style={{ color: "blue" }}>
                     Terms and Conditions
                 </span>
@@ -34,9 +33,8 @@ const SummaryForm = ({ setOrderPhase }) => {
         <Container>
             <Row>
                 <Col>
-                    <Form.Group className="mb-3">
+                    <Form.Group controlId="formcheck" className="mb-3">
                         <Form.Check
-                            required
                             label={checkBoxLabel}
                             checked={isChecked}
                             onChange={(e) => setIsChecked(e.target.checked)}

@@ -5,6 +5,8 @@ import {
 } from '@testing-library/react';
 import App from '../App.jsx';
 import userEvent from '@testing-library/user-event';
+import OrderEntry from '../components/entry/OrderEntry.jsx';
+import { OrderDetailsProvider } from '../components/context/OrderDetailsContext.jsx';
 
 test('order Phases for happy path', async () => {
   /** Create a user **/
@@ -64,9 +66,7 @@ test('order Phases for happy path', async () => {
 
   /** Accept Terms & COnditions and click button to confirm order **/
   //   screen.debug();
-  const termsandcondCheckbox = screen.getByRole('checkbox', {
-    name: /agree Terms & /i,
-  });
+  const termsandcondCheckbox = screen.getByRole('checkbox');
   await user.click(termsandcondCheckbox);
 
   const confirmButton = screen.getByRole('button', { name: 'Confirm Order' });
@@ -76,8 +76,8 @@ test('order Phases for happy path', async () => {
 
   // check whethere Loading... got removed from the DOM.
 
-  //   const loader = screen.getByText(/Loading/i);
-  //   expect(loader).toBeInTheDocument();
+  // const loader = screen.getByText(/Loading/i);
+  // expect(loader).toBeInTheDocument();
 
   await waitForElementToBeRemoved(() => screen.queryByText(/Loading/i));
 
@@ -147,6 +147,7 @@ describe('Toppings header is not on summary page', () => {
     const vanillaInput = await screen.findByRole('spinbutton', {
       name: 'Vanilla',
     });
+
     await user.clear(vanillaInput);
     await user.type(vanillaInput, '2');
 
@@ -170,4 +171,32 @@ describe('Toppings header is not on summary page', () => {
     const toppingHeading = screen.queryByRole('heading', { name: /topping/i });
     expect(toppingHeading).not.toBeInTheDocument();
   });
+});
+
+test('disable order button if there are no scoops ordered', async () => {
+  /** Creating a user **/
+  const user = userEvent.setup();
+
+  render(<OrderEntry setOrderPhase={jest.fn()} />, {
+    wrapper: OrderDetailsProvider,
+  });
+
+  const orderButton = screen.getByRole('button', { name: 'Order Sundae' });
+  await user.click(orderButton);
+  expect(orderButton).toBeDisabled();
+
+  // expect button to be enabled after adding scoop
+  /** Take 2 scoops of vanilla and click on the Order Sundae button **/
+  const vanillaInput = await screen.findByRole('spinbutton', {
+    name: 'Vanilla',
+  });
+
+  await user.clear(vanillaInput);
+  await user.type(vanillaInput, '2');
+  expect(orderButton).toBeEnabled();
+
+  // expect button to be disabled again after removing scoop
+  user.clear(vanillaInput);
+  user.type(vanillaInput, '0');
+  expect(orderButton).toBeDisabled();
 });

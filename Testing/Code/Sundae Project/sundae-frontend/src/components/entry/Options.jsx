@@ -46,7 +46,7 @@ const Options = ({ optionType }) => {
 
 
                 setItems(res.data.data);
-            } catch {
+            } catch (err) {
                 setShowError(true);
             }
 
