@@ -7,11 +7,15 @@ const Options = () => {
     return (
             <Select style={{width:"100%"}}
                 placeholder="Select the fruit"
-            >
-                {fruits.map((fruit, i) => {
-                    return <Select.Option key={fruit} value={fruit}>{fruit}</Select.Option>
+                options={fruits.map((value)=>{
+                    return{
+                        key:value,
+                        label: value,
+                        value
+                    }
                 })}
-            </Select>
+            />
+
     )
 }
 
