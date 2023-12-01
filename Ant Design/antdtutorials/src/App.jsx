@@ -3,6 +3,7 @@ import './App.css';
 import ButtonndSteps from './components/ButtonndSteps';
 import Options from './components/Options';
 import FormCheck from './components/FormCheck';
+import DynamicForm from './components/DynamicForm';
 
 
 function App() {
@@ -14,8 +15,8 @@ function App() {
 
         <ButtonndSteps />
         <Options />
-
         <FormCheck />
+        <DynamicForm/>
       </Space>
 
     </div>

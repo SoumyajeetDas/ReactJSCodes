@@ -24,15 +24,15 @@ const FormCheck = () => {
             style={{ maxWidth: 600, marginTop: 50 }}
 
             // onFinish = onSubmit
-            onFinish={(values)=>{
+            onFinish={(values) => {
                 console.log(values)
             }}
 
             // If the onFinish fais due t some validation
-            onFinishFailed={(errorInfo)=>{
+            onFinishFailed={(errorInfo) => {
                 console.log(errorInfo)
             }}
-            >
+        >
             <Form.Item
                 label="Username"
                 name="username"
@@ -153,12 +153,38 @@ const FormCheck = () => {
                 ]}
                 hasFeedback
             >
-                <Select placeholder="Select your hobby">
+
+                {/* You write select in 2 ways. */}
+
+                {/* <Select placeholder="Select your hobby">
                     <Select.Option value="cycling">Cycling</Select.Option>
                     <Select.Option value="drawing">Drawing</Select.Option>
                     <Select.Option value="reading">Reading</Select.Option>
-                </Select>
+                </Select> */}
+
+
+                <Select
+                    placeholder="Select your hobby"
+                    style={{
+                        width: "100%",
+                    }}
+                    options={[
+                        {
+                            value: "cycling",
+                            label: "Cycling"
+                        },
+                        {
+                            value: "drawing",
+                            label: "Drawing"
+                        },
+                        {
+                            value: "reading",
+                            label: "Reading"
+                        }
+                    ]} />
+
             </Form.Item>
+
             <Form.Item
                 label="DOB"
                 name="dob"
