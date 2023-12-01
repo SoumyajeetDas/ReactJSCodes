@@ -16,7 +16,23 @@ const FormCheck = () => {
         // creating a gap between the label and the input field. 
 
         // labelCol={{ span: 5 }} means that the label will occupy 5 out of 24 columns.
-        <Form autoComplete='off' labelCol={{ span: 5 }} wrapperCol={{ offset: 2, span: 24 }} style={{ maxWidth: 600, marginTop: 50 }}>
+        <Form
+            requiredMark="optional"
+            autoComplete='off'
+            labelCol={{ span: 5 }}
+            wrapperCol={{ offset: 2, span: 24 }}
+            style={{ maxWidth: 600, marginTop: 50 }}
+
+            // onFinish = onSubmit
+            onFinish={(values)=>{
+                console.log(values)
+            }}
+
+            // If the onFinish fais due t some validation
+            onFinishFailed={(errorInfo)=>{
+                console.log(errorInfo)
+            }}
+            >
             <Form.Item
                 label="Username"
                 name="username"
@@ -28,43 +44,99 @@ const FormCheck = () => {
                 rules={[
                     {
                         required: true,
-                        message:"Please enter the username"
+                        message: "Please enter the username"
                     },
                     {
                         // There should not be any whitespace
-                        whitespace:true,
-                        message:"Please enter a valid username"
+                        whitespace: true,
+                        message: "Please enter a valid username"
                     },
                     {
-                        min:3,
-                        message:"Username should be atleast of 3 characters"
+                        min: 3,
+                        message: "Username should be atleast of 3 characters"
                     }
 
                 ]}
                 hasFeedback
 
-    
+
             >
                 <Input placeholder='Type your name' />
             </Form.Item>
+
             <Form.Item
                 label="Email"
-                name="email">
+                name="email"
+                rules={[
+                    {
+                        required: true,
+                        message: "Please enter the email address"
+                    },
+                    {
+                        type: "email",
+                        message: "The email provided is not a valid one"
+                    }
+                ]}
+
+                hasFeedback
+            >
                 <Input placeholder='Type your email' />
             </Form.Item>
+
             <Form.Item
                 label="Password"
-                name="password">
+                name="password"
+                rules={[
+                    {
+                        required: true,
+                        message: "Please enter the password"
+                    },
+                    {
+                        pattern: /[A-Z]+@[A-Z]+/,
+                        message: "Password should contain a @"
+                    }
+                ]}
+                hasFeedback
+            >
                 <Input.Password placeholder='Type your password' />
             </Form.Item>
+
             <Form.Item
                 label="Confirm Password"
-                name="cnfpassword">
+                name="cnfpassword"
+                dependencies={["password"]} // Provide the name prop attached to the password label
+                rules={[
+                    {
+                        required: true,
+                        message: "Please enter the password"
+                    }
+                    ,
+                    ({ getFieldValue }) => ({
+                        validator(_, value) {
+
+                            // getFieldValue the name prop attached to the password label
+                            if (!value || getFieldValue("password") === value) {
+                                return Promise.resolve()
+                            }
+                            return Promise.reject("Password and confirm Password does not match")
+                        }
+                    })
+                ]}
+                hasFeedback
+            >
                 <Input.Password placeholder='Type your password' />
             </Form.Item>
+
             <Form.Item
                 label="Gender"
-                name="gender">
+                name="gender"
+            // rules={[
+            //     {
+            //         required:true,
+            //         message:"Please select a gender"
+            //     }
+            // ]}
+            >
                 <Radio.Group>
                     <Radio value="male">Male</Radio>
                     <Radio value="female">Female</Radio>
@@ -72,7 +144,15 @@ const FormCheck = () => {
             </Form.Item>
             <Form.Item
                 label="Hobby"
-                name="hobby">
+                name="hobby"
+                rules={[
+                    {
+                        required: true,
+                        message: "Please select hobby"
+                    }
+                ]}
+                hasFeedback
+            >
                 <Select placeholder="Select your hobby">
                     <Select.Option value="cycling">Cycling</Select.Option>
                     <Select.Option value="drawing">Drawing</Select.Option>
@@ -82,12 +162,36 @@ const FormCheck = () => {
             <Form.Item
                 label="DOB"
                 name="dob"
+                rules={[
+                    {
+                        required: true,
+                        message: "Please provide DOB"
+                    },
+                    {
+                        type: "date",
+                        message: "Please provide DOB in date format"
+                    }
+                ]}
+                hasFeedback
             >
                 <DatePicker picker='date' style={{ width: '100%' }} />
             </Form.Item>
+
             <Form.Item
                 label="Website"
-                name="website">
+                name="website"
+                rules={[
+                    {
+                        required: true,
+                        message: "Please provide website url"
+                    },
+                    {
+                        type: "url",
+                        message: "Please provide a valid url"
+                    }
+                ]}
+                hasFeedback
+            >
                 <Input placeholder='Add your website url' />
             </Form.Item>
 
@@ -110,10 +214,19 @@ const FormCheck = () => {
                 // The wrapper col needs to be given here to override the global one. The global contains offset:2 which is creatig an 
                 // issue.
                 wrapperCol={{ span: 24 }}
+
+                // We need to give valuePropName otherwise if you uncheck the error will not go away. For others it goes away as it has
+                // a value prop but for this it does not have that rather it has a prop called "checked"which is having a value true/false
+                valuePropName='checked'
+                rules={[
+                    {
+                        required: true,
+                        message: "You need to agree with us before you proceed forward"
+                    }
+                ]}
             >
 
-                <Checkbox>
-                    Agree to our Terms and Conditions</Checkbox>
+                <Checkbox>Agree to our Terms and Conditions</Checkbox>
             </Form.Item>
 
             {/* <Form.Item
