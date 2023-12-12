@@ -1,17 +1,21 @@
 import React from 'react'
 import useProductData from '../../../hooks/useProductData'
-import { Alert, Badge, Card, Flex, Image, List, Spin, Typography } from 'antd';
+import { Alert, Badge, Card, Flex, Image, List, Rate, Spin, Typography } from 'antd';
+import AddToCart from '../../addToCart/AddToCart';
 
 const Home = () => {
-  const { isLoading, isError, isFetching, data, error } = useProductData();
+  const { isLoading, isError, isFetching, data, error, isPaused } = useProductData();
+
   const { Paragraph, Text } = Typography
 
-  // console.log(data?.data?.products)
+
   return (
     <div>
-      {(isLoading && isFetching) && <Flex justify='center' align='center'><Spin size='large' /></Flex>}
+      {(isLoading && isFetching) && <Flex justify='center' align='center' style={{ height: "100vh" }}><Spin size='large' /></Flex>}
 
-      {isError && <Flex justify='center' align='center'><Alert message={error?.message} type="error" /></Flex>}
+      {isError && <Flex justify='center' align='center'><Alert style={{ marginTop: 10 }} message={error?.message} type="error" /></Flex>}
+
+      {isPaused && <Flex justify='center' align='center'><Alert style={{ marginTop: 10 }} message="Please check your internet connection" type="error" /></Flex>}
 
       {(!isError && data) &&
         <List
@@ -21,7 +25,7 @@ const Home = () => {
             // Making it responsive
             xs: 1,
             sm: 2,
-            md: 3,
+            md: 2,
             lg: 3,
             xl: 3,
             xxl: 3,
@@ -35,8 +39,12 @@ const Home = () => {
                     hoverable
                     key={product?.id}
                     title={product?.title}
+                    style={{ height: "100%" }}
                     cover={<Image height={300} src={product?.thumbnail} />}
-                    style={{ height: 500 }}
+                    actions={[
+                      <Rate disabled allowHalf defaultValue={product?.rating} />,
+                      <AddToCart item={product} />
+                    ]}
                   >
                     <Card.Meta
                       title={
@@ -44,7 +52,7 @@ const Home = () => {
                           <Text type='danger' delete>${parseFloat((100 + product?.discountPercentage) * product?.price).toFixed(2)}</Text>
                         </Paragraph>
                       }
-                      description={<Paragraph ellipsis={{ rows: 2, expandable: true, symbol: 'more' }}>{product?.description}</Paragraph>}
+                      description={<Paragraph ellipsis={{ rows: 1, expandable: true, symbol: 'more' }}>{product?.description}</Paragraph>}
                     />
                   </Card>
                 </Badge.Ribbon>

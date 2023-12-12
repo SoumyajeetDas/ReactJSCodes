@@ -8,17 +8,16 @@ const Header = () => {
 
     return (
         <Menu mode="horizontal"
-            onClick={(value)=>{
-                const {key} = value;
-                console.log(key)
-                if(key==="home"){
+            onClick={(value) => {
+                const { key } = value;
+                if (key === "home") {
                     navigate(`/`)
                     return;
                 }
-                navigate(`/${key}`)
+                navigate(`/product/${key}`)
             }}
 
-            defaultSelectedKeys={[`${window.location.pathname==="/" ? 'home' : window.location.pathname.split("/")[1]}`]}
+            defaultSelectedKeys={[`${window.location.pathname === "/" ? 'home' : window.location.pathname.split("/")[1]}`]}
             items={[
                 {
                     key: 'home',
@@ -30,15 +29,11 @@ const Header = () => {
                     children: [
                         {
                             label: 'Men\'s Shirts',
-                            key: 'men-shirts',
-                        },
-                        {
-                            label: 'Men\'s Shoes',
-                            key: 'men-shoes'
+                            key: 'mens-shirts',
                         },
                         {
                             label: 'Men\'s Watches',
-                            key: 'men-watches'
+                            key: 'mens-watches'
                         }
                     ]
                 },
@@ -48,25 +43,13 @@ const Header = () => {
                     children: [
                         {
                             label: 'Women\'s Dresses',
-                            key: 'women-shirts',
+                            key: 'womens-dresses',
                         },
                         {
                             label: 'Women\'s Shoes',
-                            key: 'women-shoes'
+                            key: 'womens-shoes'
                         },
-                        {
-                            label: 'Women\'s Watches',
-                            key: 'women-watches'
-                        },
-                        {
-                            label: 'Women\'s Bags',
-                            key: 'women-bags'
-                        }
                     ]
-                },
-                {
-                    key: 'accessories',
-                    label: 'Accessories',
                 },
             ]}
 
