@@ -9,7 +9,7 @@ import {
     Radio,
     RadioGroup,
     TextField,
-    Typography, Accordion, AccordionSummary, AccordionDetails,
+    Typography,
 } from '@mui/material';
 import React from 'react';
 import { useForm } from "react-hook-form";
@@ -44,7 +44,7 @@ const FormValid = () => {
         <div>
 
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
-                <FormControl variant="standard" fullWidth >
+                <FormControl variant="standard" fullWidth>
                     <FormLabel sx={{ textAlign: "center", m: "2rem 0" }}>
                         <Typography variant='h4' color="secondary" sx={{ textDecoration: "underline" }}>
                             Form with react-hook-form & yup

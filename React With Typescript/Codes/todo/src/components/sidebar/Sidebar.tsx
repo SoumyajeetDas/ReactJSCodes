@@ -1,5 +1,7 @@
 import { Grid } from '@mui/material';
 import React, { FC, ReactElement } from 'react';
+import Profile from '../profile/Profile';
+import CreateTaskForm from '../createTaskForm/CreateTaskForm';
 
 const Sidebar: FC = (): ReactElement => {
   return (
@@ -19,7 +21,8 @@ const Sidebar: FC = (): ReactElement => {
         alignItems: 'center',
       }}
     >
-      Sidebar Area
+      <Profile name="John" />
+      <CreateTaskForm />
     </Grid>
   );
 };
