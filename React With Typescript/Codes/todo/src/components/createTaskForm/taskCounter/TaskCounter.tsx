@@ -6,6 +6,8 @@ import { emitCorrectBorderColor } from './helpers/emitCorrectBorderColor';
 import { emitCorrectLabel } from './helpers/emitCorrectLabel';
 
 const TaskCounter: FC<ITaskCounter> = ({
+  // Keeping default value for both the prop so that TS doesn't throws error even if the value is not passed
+  // This step is optional
   status = Status.COMPLETED,
   count = 0,
 }): ReactElement => {

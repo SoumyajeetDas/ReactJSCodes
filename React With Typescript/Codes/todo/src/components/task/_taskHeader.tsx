@@ -4,6 +4,8 @@ import { ITaskHeader } from './interface/ITaskHeader';
 import format from 'date-fns/format';
 
 const TaskHeader: FC<ITaskHeader> = ({
+  // Keeping default value for both the prop so that TS doesn't throws error even if the value is not passed
+  // This step is optional
   title = 'Title',
   date = new Date(),
 }): ReactElement => {

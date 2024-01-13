@@ -9,6 +9,8 @@ import MenuItem from '@mui/material/MenuItem';
 import { ISelectField } from './interfaces/ISelectField';
 
 const TaskSelectField: FC<ISelectField> = ({
+  // Keeping default value for both the prop so that TS doesn't throws error even if the value is not passed
+  // This step is optional
   disabled = false,
   value = '',
   name = 'selectBox',

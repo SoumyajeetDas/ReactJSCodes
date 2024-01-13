@@ -3,6 +3,8 @@ import React, { FC, ReactElement } from 'react';
 import { ITaskFooter } from './interface/ITaskFooter';
 
 const TaskFooter: FC<ITaskFooter> = ({
+  // Keeping default value for both the prop so that TS doesn't throws error even if the value is not passed
+  // This step is optional
   onStatusChange = (e) => console.log(e),
   onClick = (e) => console.log(e),
 }): ReactElement => {

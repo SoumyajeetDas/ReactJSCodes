@@ -12,6 +12,8 @@ import {
 import { IDateField } from './interfaces/IDateField';
 
 const TaskDateField: FC<IDateField> = ({
+  // Keeping default value for both the prop so that TS doesn't throws error even if the value is not passed
+  // This step is optional
   disabled,
   value = new Date(),
   onChange = (date: Date | null) => console.log(date),
