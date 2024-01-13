@@ -2,6 +2,7 @@ import { Box, Grid } from '@mui/material';
 import format from 'date-fns/format';
 import React, { FC, ReactElement } from 'react';
 import TaskCounter from '../createTaskForm/taskCounter/TaskCounter';
+import Task from '../task/Task';
 
 const TaskArea: FC = (): ReactElement => {
   return (
@@ -30,11 +31,16 @@ const TaskArea: FC = (): ReactElement => {
         <Grid
           item
           display="flex"
-          justifyContent="space-around"
+          flexDirection="column"
+          justifyContent="space-between"
           alignItems="center"
           xs={10} //For extra small devices it will occupy 10 columns
           mb={8}
-        ></Grid>
+        >
+          <Task />
+          <Task />
+          <Task />
+        </Grid>
       </Grid>
     </Grid>
   );
