@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useState } from 'react';
+import React, { FC, ReactElement } from 'react';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
@@ -18,7 +18,7 @@ const TaskDateField: FC<IDateField> = ({
   value = new Date(),
   onChange = (date: Date | null) => console.log(date),
 }): ReactElement => {
-  const [date, setDate] = useState<Date | null>(value);
+  // const [date, setDate] = useState<Date | null>(value);
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DesktopDatePicker
@@ -26,7 +26,7 @@ const TaskDateField: FC<IDateField> = ({
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         inputFormat="MM/DD/YYYY"
-        value={date}
+        value={value}
         disabled={disabled}
         onChange={onChange}
         renderInput={(
