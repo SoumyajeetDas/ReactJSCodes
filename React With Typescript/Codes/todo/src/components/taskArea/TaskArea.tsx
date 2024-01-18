@@ -3,14 +3,16 @@ import format from 'date-fns/format';
 import React, { FC, ReactElement } from 'react';
 import TaskCounter from '../createTaskForm/taskCounter/TaskCounter';
 import Task from '../task/Task';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { sendApiRequest } from '../../hepers/sendApiRequest';
 import { ITaskAPi } from './interfaces/ITaskApi';
 import { Priority } from '../createTaskForm/enums/Priority';
 import { Status } from '../createTaskForm/enums/Status';
+import { IUpdateTask } from '../task/interface/IUpdateTask';
+import { countTasks } from './helpers/countTasks';
 
 const TaskArea: FC = (): ReactElement => {
-  const { error, isLoading, data, refetch } = useQuery({
+  const { error, isLoading, data } = useQuery({
     queryKey: ['task'],
     queryFn: async () =>
       sendApiRequest<ITaskAPi[]>('http://localhost:3200/tasks', 'GET'),
@@ -18,7 +20,35 @@ const TaskArea: FC = (): ReactElement => {
     staleTime: 1800000,
   });
 
-  console.log(data);
+  const queryClient = useQueryClient();
+  const updateTaskMutation = useMutation({
+    mutationFn: async (updatedTask: IUpdateTask) =>
+      sendApiRequest(`http://localhost:3200/tasks/`, 'PUT', updatedTask),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['task'] }),
+  });
+
+  function onStatusChangeHandler(
+    e: React.ChangeEvent<HTMLInputElement>,
+    id: number,
+  ) {
+    updateTaskMutation.mutate({
+      status: e.target.checked ? Status.IN_PROGRESS : Status.TODO,
+      id,
+    });
+  }
+
+  function markCompleteHandler(
+    e:
+      | React.MouseEvent<HTMLButtonElement, MouseEvent>
+      | React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    id: number,
+  ) {
+    updateTaskMutation.mutate({
+      status: Status.COMPLETED,
+      id,
+    });
+  }
+
   return (
     <Grid item md={8} px={4}>
       <Box mb={8} px={4}>
@@ -38,9 +68,18 @@ const TaskArea: FC = (): ReactElement => {
           xs={12} //For extra small devices it will occupy 12 columns
           mb={8}
         >
-          <TaskCounter />
-          <TaskCounter />
-          <TaskCounter />
+          <TaskCounter
+            count={data ? countTasks(data, Status.TODO) : undefined}
+            status={Status.TODO}
+          />
+          <TaskCounter
+            count={data ? countTasks(data, Status.IN_PROGRESS) : undefined}
+            status={Status.IN_PROGRESS}
+          />
+          <TaskCounter
+            count={data ? countTasks(data, Status.COMPLETED) : undefined}
+            status={Status.COMPLETED}
+          />
         </Grid>
         <Grid
           item
@@ -66,17 +105,23 @@ const TaskArea: FC = (): ReactElement => {
           {isLoading ? (
             <LinearProgress />
           ) : (
-            data?.map((task, index) => (
-              <Task
-                key={task.status + index}
-                id={task.id}
-                title={task.title}
-                date={new Date(task.date)}
-                description={task.description}
-                priority={task.priority as Priority}
-                status={task.status as Status}
-              />
-            ))
+            data?.map(
+              (task, index) =>
+                // Only if the status is in todo or inprogress state then render the task
+                task.status !== Status.COMPLETED && (
+                  <Task
+                    key={task.status + index}
+                    id={task.id}
+                    title={task.title}
+                    date={new Date(task.date)}
+                    description={task.description}
+                    priority={task.priority as Priority}
+                    status={task.status as Status}
+                    onStatusChange={(e) => onStatusChangeHandler(e, task.id)}
+                    onClick={(e) => markCompleteHandler(e, task.id)}
+                  />
+                ),
+            )
           )}
         </Grid>
       </Grid>

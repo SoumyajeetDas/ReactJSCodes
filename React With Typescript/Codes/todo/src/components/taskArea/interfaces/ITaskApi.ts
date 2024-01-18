@@ -2,7 +2,7 @@ import { Priority } from '../../createTaskForm/enums/Priority';
 import { Status } from '../../createTaskForm/enums/Status';
 
 export interface ITaskAPi {
-  id: string;
+  id: number;
   date: string;
   title: string;
   description: string;
