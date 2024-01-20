@@ -15,7 +15,7 @@ const TaskDateField: FC<IDateField> = ({
   // Keeping default value for both the prop so that TS doesn't throws error even if the value is not passed
   // This step is optional
   disabled,
-  value = new Date(),
+  value,
   onChange = (date: Date | null) => console.log(date),
 }): ReactElement => {
   // const [date, setDate] = useState<Date | null>(value);

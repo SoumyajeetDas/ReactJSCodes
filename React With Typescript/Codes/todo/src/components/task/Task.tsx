@@ -5,18 +5,17 @@ import TaskDescripton from './_taskDescription';
 import TaskFooter from './_taskFooter';
 import { ITask } from './interface/ITask';
 import { Priority } from '../createTaskForm/enums/Priority';
-import { Status } from '../createTaskForm/enums/Status';
 import { renderPriorityBorderColor } from './helpers/renderPriorityBorderColor';
 
 const Task: FC<ITask> = ({
   id,
-  title = 'Title',
-  description = 'Task Description',
-  date = new Date(),
-  priority = Priority.HIGH,
-  status = Status.COMPLETED,
-  onStatusChange = (e) => console.log(e),
-  onClick = (e) => console.log(e),
+  title,
+  description,
+  date,
+  priority,
+  status,
+  onStatusChange,
+  onClick,
 }): ReactElement => {
   return (
     <Stack

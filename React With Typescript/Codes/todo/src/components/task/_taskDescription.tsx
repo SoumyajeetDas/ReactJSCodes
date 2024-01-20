@@ -5,7 +5,7 @@ import { ITaskDescription } from './interface/ITaskDescription';
 const TaskDescripton: FC<ITaskDescription> = ({
   // Keeping default value for both the prop so that TS doesn't throws error even if the value is not passed
   // This step is optional
-  description = 'Task Description',
+  description,
 }): ReactElement => {
   return (
     <Stack width="100%" justifyContent="space-between">

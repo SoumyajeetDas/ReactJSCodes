@@ -11,11 +11,11 @@ import { ISelectField } from './interfaces/ISelectField';
 const TaskSelectField: FC<ISelectField> = ({
   // Keeping default value for both the prop so that TS doesn't throws error even if the value is not passed
   // This step is optional
-  disabled = false,
-  value = '',
-  name = 'selectBox',
-  label = 'selectbox',
-  items = [{ value: '', label: 'Add Items' }],
+  disabled,
+  value,
+  name,
+  label,
+  items,
   onChange = (e: SelectChangeEvent) => console.log(e),
 }): ReactElement => {
   return (
@@ -30,7 +30,7 @@ const TaskSelectField: FC<ISelectField> = ({
         disabled={disabled}
         onChange={onChange}
       >
-        {items.map((item) => (
+        {items?.map((item) => (
           <MenuItem key={item?.value} value={item.value}>
             {item.label}
           </MenuItem>

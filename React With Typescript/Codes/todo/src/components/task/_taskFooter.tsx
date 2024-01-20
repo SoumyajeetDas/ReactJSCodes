@@ -8,14 +8,8 @@ const TaskFooter: FC<ITaskFooter> = ({
   // This step is optional
   id,
   status,
-  onStatusChange = (e: React.ChangeEvent<HTMLInputElement>, id: number) =>
-    console.log(e, id),
-  onClick = (
-    e:
-      | React.MouseEvent<HTMLButtonElement, MouseEvent>
-      | React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    id: number,
-  ) => console.log(e, id),
+  onStatusChange,
+  onClick,
 }): ReactElement => {
   return (
     <Stack

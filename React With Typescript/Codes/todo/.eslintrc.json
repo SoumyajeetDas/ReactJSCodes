@@ -7,18 +7,57 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "plugin:@tanstack/eslint-plugin-query/recommended"
+    "plugin:@tanstack/eslint-plugin-query/recommended",
+    "plugin:testing-library/react",
+    "plugin:jsx-a11y/recommended",
+    "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "react", "@tanstack/query"],
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "@tanstack/query",
+    "jsx-a11y",
+    "react-hooks",
+    "prettier"
+  ],
   "rules": {
     "@tanstack/query/exhaustive-deps": "error",
     "@tanstack/query/no-rest-destructuring": "warn",
-    "@tanstack/query/stable-query-client": "error"
+    "@tanstack/query/stable-query-client": "error",
+    // "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
+    "testing-library/await-async-queries": "error",
+    "testing-library/no-await-sync-queries": "error",
+    "testing-library/no-debugging-utils": "warn",
+    "testing-library/no-dom-import": "off",
+    "react/prop-types": ["off"],
+    // "max-lines-per-function": ["warn", 50],
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".tsx", ".jsx", ".ts"] }
+    ],
+    // "import/extensions": ["warn", "never"],
+    // "import/no-unresolved": 2,
+    "sort-imports": "off",
+    "import/order": "off",
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": "warn",
+    "react-hooks/rules-of-hooks": "warn",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-curly-newline": "off",
+    // "import/prefer-default-export": "off"
+    "prettier/prettier": [
+      "warn",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   },
   "settings": {
     "import/resolver": {

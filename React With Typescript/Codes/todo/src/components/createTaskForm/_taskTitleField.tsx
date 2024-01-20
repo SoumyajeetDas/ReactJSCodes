@@ -5,8 +5,8 @@ import { ITextField } from './interfaces/ITextField';
 const TitleTaskField: FC<ITextField> = ({
   // Keeping default value for both the prop so that TS doesn't throws error even if the value is not passed
   // This step is optional
-  disabled = false,
-  onChange = (e) => console.log(e),
+  disabled,
+  onChange,
 }): ReactElement => {
   return (
     <TextField

@@ -6,8 +6,8 @@ import format from 'date-fns/format';
 const TaskHeader: FC<ITaskHeader> = ({
   // Keeping default value for both the prop so that TS doesn't throws error even if the value is not passed
   // This step is optional
-  title = 'Title',
-  date = new Date(),
+  title,
+  date,
 }): ReactElement => {
   return (
     <Box display="flex" width="100%" justifyContent="space-between" mb={4}>
@@ -15,7 +15,7 @@ const TaskHeader: FC<ITaskHeader> = ({
         <Typography variant="h6">{title}</Typography>
       </Box>
       <Box>
-        <Chip variant="outlined" label={format(date, 'PPP')} />
+        <Chip variant="outlined" label={format(date ?? new Date(), 'PPP')} />
       </Box>
     </Box>
   );
