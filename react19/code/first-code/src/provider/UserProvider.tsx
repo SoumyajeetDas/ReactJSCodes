@@ -13,10 +13,15 @@ const UserContextProvider: React.FC<React.PropsWithChildren> = ({
   };
 
   const updateUsersList = (username: string) => {
-    const key =
-      username?.split(' ')[0].toLowerCase() +
-      '-' +
-      username?.split(' ')[1].toLowerCase();
+    let key = '';
+    if (username.split(' ').length === 1) {
+      key = username?.toLowerCase();
+    } else {
+      key =
+        username?.split(' ')[0].toLowerCase() +
+        '-' +
+        username?.split(' ')[1].toLowerCase();
+    }
 
     const user = users.find((user) => user[key]);
     if (user) {
