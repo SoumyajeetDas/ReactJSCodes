@@ -1,5 +1,5 @@
+import { Outlet } from 'react-router-dom';
 import { useAppSelector } from '../utils/store';
-import MainContainer from './MainContainer';
 import Sidebar from './Sidebar';
 
 const Body = () => {
@@ -8,12 +8,12 @@ const Body = () => {
   return (
     <div className="grid h-full grid-flow-col">
       {isMenuOpen && (
-        <div className="col-span-2">
+        <div className="col-span-5 min-w-52">
           <Sidebar />
         </div>
       )}
-      <div className={`col-span-${isMenuOpen ? 10 : 12}`}>
-        <MainContainer />
+      <div className={`col-span-${isMenuOpen ? 7 : 12}`}>
+        <Outlet />
       </div>
     </div>
   );
