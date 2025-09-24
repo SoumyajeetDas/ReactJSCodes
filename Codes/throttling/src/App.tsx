@@ -26,13 +26,13 @@ function App() {
     setWindowWidth({ x: window.innerWidth, y: window.innerHeight });
   };
 
-  const throttlingCallback = useThrottle(handleResize, 6000);
+  const throttlingResizeHandler = useThrottle(handleResize, 6000);
 
   useEffect(() => {
-    window.addEventListener('resize', throttlingCallback);
+    window.addEventListener('resize', throttlingResizeHandler);
 
-    return () => window.removeEventListener('resize', throttlingCallback);
-  }, [throttlingCallback]);
+    return () => window.removeEventListener('resize', throttlingResizeHandler);
+  }, [throttlingResizeHandler]);
 
   return (
     <div>
