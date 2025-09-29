@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import './App.css';
 
 const useThrottle = (callback: () => void, delay: number) => {
-  let lastRun = Date.now();
+  let lastRun = 0; // Initialize to 0 so first call executes immediately
 
   return useCallback(() => {
     const now = Date.now();
