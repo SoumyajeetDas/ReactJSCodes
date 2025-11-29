@@ -27,7 +27,7 @@ export default function App() {
     },
   });
 
-  const [tableFormData, setTableFormData] = useState({});
+  const [tableFormData, setTableFormData] = useState([]);
 
   const handleChange = (e) => {
     if (e.target.name !== "hobbies")
@@ -55,10 +55,20 @@ export default function App() {
       hobbies: formatHobbies(formData?.hobbies),
     };
 
-    console.log(formatHobbies(formData?.hobbies));
+    let arr = [];
 
-    setTableFormData(formTableData);
+    for (let key in formTableData) {
+      if (formTableData[key]) {
+        arr.unshift({
+          key,
+          value: formTableData[key],
+        });
+      }
+    }
+
+    setTableFormData(arr);
   };
+
   return (
     <div className="App">
       <form onSubmit={onSubmit}>
@@ -140,13 +150,7 @@ export default function App() {
         <button type="submit">Submit</button>
       </form>
 
-      <Table
-        name={tableFormData?.name}
-        password={tableFormData?.password}
-        branch={tableFormData?.branch}
-        gender={tableFormData?.gender}
-        hobbies={tableFormData?.hobbies}
-      />
+      <Table tableData={tableFormData} />
     </div>
   );
 }
