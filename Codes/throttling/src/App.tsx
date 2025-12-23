@@ -22,9 +22,10 @@ function App() {
     y: window.innerHeight,
   });
 
-  const handleResize = () => {
+  // If you are using React Compiler you just not need to wrap this function in useCallback
+  const handleResize = useCallback(() => {
     setWindowWidth({ x: window.innerWidth, y: window.innerHeight });
-  };
+  }, []);
 
   const throttlingResizeHandler = useThrottle(handleResize, 6000);
 
