@@ -1,3 +1,5 @@
+import React from "react";
+
 const Table = ({ formValues }) => {
   console.log(formValues);
   return (
@@ -10,17 +12,19 @@ const Table = ({ formValues }) => {
       </thead>
       <tbody>
         {formValues?.map((val) => (
-          <tr>
+          <tr key={val?.name}>
             <td>{val.name}</td>
             <td>
               <table>
                 <thead>
-                  <th>Field</th>
-                  <th>Value</th>
+                  <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                  </tr>
                 </thead>
                 <tbody>
                   {val.values.map((x) => (
-                    <tr>
+                    <tr key={Object.keys(x)[0]}>
                       <td>{Object.keys(x)[0]}</td>
                       <td>{x[Object.keys(x)[0]]}</td>
                     </tr>
@@ -35,4 +39,7 @@ const Table = ({ formValues }) => {
   );
 };
 
-export default Table;
+// You don't need to use React.memo if the React Compiler is enabled in vite.config.js
+const MemoizedTable = React.memo(Table);
+
+export default MemoizedTable;
