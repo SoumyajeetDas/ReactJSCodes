@@ -1,0 +1,74 @@
+.App {
+  font-family: sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 10px 10px 20px 2px rgb(175, 175, 175);
+  padding: 20px;
+  border-radius: 20px;
+  width: 400px;
+}
+
+#more-data {
+  /* display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 33fr 33fr 33fr; */
+
+  display: flex;
+  overflow: auto;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  padding: 50px 10px;
+}
+
+#more-data>form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 10px 10px 20px 2px rgb(175, 175, 175);
+  padding: 20px;
+  border-radius: 20px;
+  width: 300px;
+}
+
+#form-grp>p {
+  color: rgb(177, 0, 0);
+}
+
+input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 0px;
+  outline: 1px solid gray;
+  transition: outline 0.5s ease;
+  width: 100%;
+}
+
+input:focus {
+  outline: 1px solid rgb(0, 130, 200);
+}
+
+button {
+  border: 0;
+  padding: 10px;
+  background-color: rgb(0, 149, 255);
+  color: white;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: rgb(0, 84, 144);
+}
