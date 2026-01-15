@@ -1,0 +1,68 @@
+.App {
+  font-family: sans-serif;
+}
+
+#box {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+#wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chip {
+  padding: 10px;
+  border-radius: 10px;
+  gap: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(205, 205, 205);
+  box-shadow: -2px -2px 10px 5px #fff, 2px 2px 2px 5px rgb(169, 169, 169);
+}
+
+.chip.active {
+  animation: show 0.5s ease forwards;
+}
+
+.chip.none {
+  animation: not-show 0.5s ease forwards;
+}
+
+.chip>button {
+  background-color: #fff;
+  border-radius: 10px;
+  border: 0;
+  box-shadow: -2px -2px 10px 5px #fff, 2px 2px 2px 5px rgb(169, 169, 169);
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    scale: 0;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes not-show {
+  from {
+    opacity: 1;
+    scale: 1;
+  }
+
+  to {
+    opacity: 0;
+    scale: 0;
+  }
+}
