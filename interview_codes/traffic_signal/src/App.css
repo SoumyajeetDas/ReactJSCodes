@@ -1,0 +1,53 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+#box {
+  width: 100px;
+  height: 300px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  /* grid-template-columns: 1fr;
+  grid-template-rows: 3fr; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#red,
+#green,
+#yellow {
+  width: 60px;
+  height: 60px;
+  border: 1px solid black;
+  border-radius: 2rem;
+}
+
+#red.color {
+  background-color: red;
+}
+
+#red.none {
+  background-color: transparent;
+}
+
+#yellow.color {
+  background-color: yellow;
+}
+
+#yellow.none {
+  background-color: transparent;
+}
+
+#green.color {
+  background-color: green;
+}
+
+#green.none {
+  background-color: transparent;
+}
