@@ -1,0 +1,59 @@
+.App {
+  font-family: sans-serif;
+}
+
+.accordion {
+  margin-top: 1.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.accordion>.header {
+  background-color: rgb(215, 215, 215);
+  padding: 5px 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion>.body.active {
+  border: 1px solid rgb(207, 207, 207);
+  padding: 5px 20px;
+  border-radius: 10px;
+
+  animation: show 0.5s ease forwards;
+}
+
+.accordion>.body.not-active {
+  border: 1px solid rgb(207, 207, 207);
+  padding: 5px 20px;
+  border-radius: 10px;
+  animation: no-show 0.2s ease forwards;
+}
+
+@keyframes show {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+    display: block;
+  }
+}
+
+@keyframes no-show {
+  from {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-10px);
+    opacity: 0;
+    display: none;
+  }
+}
