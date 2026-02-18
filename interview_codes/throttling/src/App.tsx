@@ -3,14 +3,18 @@ import './App.css';
 
 const useThrottle = (callback: () => void, delay: number) => {
   let lastRun = 0; // Initialize to 0 so first call executes immediately
+  let result: void;
 
   return useCallback(() => {
     const now = Date.now();
 
+
     if (now - lastRun >= delay) {
-      callback();
+      result = callback();
       lastRun = now;
     }
+
+    return result;
 
     // Else Ignore
   }, [callback, delay]);
@@ -27,7 +31,7 @@ function App() {
     setWindowWidth({ x: window.innerWidth, y: window.innerHeight });
   }, []);
 
-  const throttlingResizeHandler = useThrottle(handleResize, 6000);
+  const throttlingResizeHandler = useThrottle(handleResize, 3000);
 
   useEffect(() => {
     window.addEventListener('resize', throttlingResizeHandler);
