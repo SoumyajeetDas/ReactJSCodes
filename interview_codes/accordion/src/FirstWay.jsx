@@ -41,7 +41,7 @@ const FirstWay = () => {
                   ? "not-active"
                   : i === active
                     ? "active"
-                    : "no-active"
+                    : "not-active"
               }`}
             >
               <p>

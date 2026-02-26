@@ -77,7 +77,7 @@ const AccordionBody = ({ children }) => {
             ? "not-active"
             : i === active
               ? "active"
-              : "no-active"
+              : "not-active"
         }`}
       >
         {children}

@@ -17,18 +17,17 @@
   align-items: center;
 }
 
-.accordion>.body.active {
+.accordion>.body {
   border: 1px solid rgb(207, 207, 207);
   padding: 5px 20px;
   border-radius: 10px;
+}
 
+.accordion>.body.active {
   animation: show 0.5s ease forwards;
 }
 
 .accordion>.body.not-active {
-  border: 1px solid rgb(207, 207, 207);
-  padding: 5px 20px;
-  border-radius: 10px;
   animation: no-show 0.2s ease forwards;
 }
 
