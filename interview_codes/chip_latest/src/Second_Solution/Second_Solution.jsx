@@ -1,5 +1,14 @@
 import React, { useRef, useState } from "react";
 
+
+const Chips = ({ value, isDeleted, handleDelete, index }) => {
+  return (
+    <div className={`chip  ${isDeleted ? "none" : "active"}`} key={value}>
+      <p>{value}</p>
+      <button onClick={handleDelete(index)}>X</button>
+    </div>
+  );
+};
 const SecondSolution = () => {
   const [chips, setChips] = useState([]);
   const ref = useRef(null);
@@ -39,13 +48,13 @@ const SecondSolution = () => {
       <div id="wrapper">
         <div id="box">
           {chips?.map((v, i) => (
-            <div
-              className={`chip  ${v?.isDeleted ? "none" : "active"}`}
+            <Chips
               key={v?.value}
-            >
-              <p>{v?.value}</p>
-              <button onClick={handleDelete(i)}>X</button>
-            </div>
+              value={v?.value}
+              isDeleted={v?.isDeleted}
+              handleDelete={handleDelete}
+              index={i}
+            />
           ))}
         </div>
       </div>
