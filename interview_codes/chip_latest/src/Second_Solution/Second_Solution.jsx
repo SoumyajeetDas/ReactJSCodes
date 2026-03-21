@@ -27,7 +27,7 @@ const SecondSolution = () => {
   const handleDelete = (i) => () => {
     let chipData = [...chips];
 
-    chips[i].isDeleted = true;
+    chipData[i].isDeleted = true;
 
     setChips([...chipData]);
 
