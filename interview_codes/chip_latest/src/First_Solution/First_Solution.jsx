@@ -1,17 +1,8 @@
 import React, { useRef, useState } from "react";
-
-const Chips = ({ index, handleDelete, value, name }) => {
-  return (
-    <div className={`chip  ${name}`}>
-      <p>{value}</p>
-      <button onClick={handleDelete(index)}>X</button>
-    </div>
-  );
-};
+import ChipsFirstSolution from "../Chips/Chips_First_Solution";
 
 const FirstSolution = () => {
   const [chips, setChips] = useState([]);
-  const [active, setActive] = useState(-1);
   const ref = useRef(null);
 
   const handleKeyDown = (e) => {
@@ -22,19 +13,6 @@ const FirstSolution = () => {
     }
   };
 
-  const handleDelete = (i) => () => {
-    setActive(i);
-
-    setTimeout(() => {
-      setActive(-1);
-      let data = [...chips];
-
-      data = data.filter((v, index) => i !== index);
-
-      setChips([...data]);
-    }, 500);
-  };
-
   return (
     <>
       <h1>First Solution</h1>
@@ -43,12 +21,15 @@ const FirstSolution = () => {
       <div id="wrapper">
         <div id="box">
           {chips?.map((v, i) => (
-            <Chips
+            <ChipsFirstSolution
               key={v}
               index={i}
-              handleDelete={handleDelete}
+              // handleDelete={handleDelete}
               value={v}
-              name={i === active ? "none" : "active"}
+              // name={i === active ? "none" : "active"}
+              // active={active}
+              setChips={setChips}
+              chips={chips}
             />
           ))}
         </div>

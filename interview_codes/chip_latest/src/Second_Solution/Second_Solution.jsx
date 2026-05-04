@@ -1,14 +1,6 @@
 import React, { useRef, useState } from "react";
+import ChipsSecondSolution from "../Chips/Chips_Second_Solution";
 
-
-const Chips = ({ value, isDeleted, handleDelete, index }) => {
-  return (
-    <div className={`chip  ${isDeleted ? "none" : "active"}`} key={value}>
-      <p>{value}</p>
-      <button onClick={handleDelete(index)}>X</button>
-    </div>
-  );
-};
 const SecondSolution = () => {
   const [chips, setChips] = useState([]);
   const ref = useRef(null);
@@ -24,22 +16,6 @@ const SecondSolution = () => {
     }
   };
 
-  const handleDelete = (i) => () => {
-    let chipData = [...chips];
-
-    chipData[i].isDeleted = true;
-
-    setChips([...chipData]);
-
-    setTimeout(() => {
-      let data = [...chips];
-
-      data = data.filter((v, index) => i !== index);
-
-      setChips([...data]);
-    }, 500);
-  };
-
   return (
     <>
       <h1>Second Solution</h1>
@@ -48,11 +24,11 @@ const SecondSolution = () => {
       <div id="wrapper">
         <div id="box">
           {chips?.map((v, i) => (
-            <Chips
+            <ChipsSecondSolution
               key={v?.value}
               value={v?.value}
-              isDeleted={v?.isDeleted}
-              handleDelete={handleDelete}
+              setChips={setChips}
+              chips={chips}
               index={i}
             />
           ))}
